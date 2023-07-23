@@ -49,20 +49,31 @@
     <form action="#">
 
       <label for="name">Cardholder Name</label>
-      <input type="text" name="name" id="card-name" placeholder="e.g. Jane Appleseed" autocomplete="off">
+      <input type="text" name="name" id="input-name" placeholder="e.g. Jane Appleseed" autocomplete="off">
 
       <label for="number">Card Number</label>
-      <input type="number" name="number" id="card-number" placeholder="e.g. 1234 5678 9123 0000">
+      <input type="number" name="number" id="input-number" placeholder="e.g. 1234 5678 9123 0000">
 
-      <label for="exp-date">Exp. Date (MM/YY)</label>
-      <input type="number" name="exp-month" id="exp-month" max="12" placeholder="MM">
-      <input type="number" name="exp-year" id="exp-year" max="99" placeholder="YY">
+      <div class="date-cvc-container">
+
+        <div class="date-container">
+          <label for="exp-date">Exp. Date (MM/YY)</label>
+          <div>
+            <input type="number" name="exp-month" id="input-exp-month" placeholder="MM">
+            <input type="number" name="exp-year" id="input-exp-year" placeholder="YY">
+          </div>
+        </div>
 
 
-      <label for="cvc">CVC</label>
-      <input type="number" name="cvc-number" id="cvc-number" placeholder="e.g. 123">
+        <div class="cvc-container">
+          <label for="cvc">CVC</label>
+          <div>
+            <input type="number" name="cvc-number" id="cvc-number" placeholder="e.g. 123">
+          </div>
+        </div>
+      </div>
 
-      <input type="button" value="Confirm">
+      <input class="confirm-button" type="button" value="Confirm">
     </form>
 
 
@@ -81,6 +92,8 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
     Coded by <a href="#">Your Name Here</a>.
   </div> -->
+
+  <script src="./assets/js/index.js"></script>
 </body>
 
 </html>

@@ -9,8 +9,7 @@ body::before {
   top: 0;
   bottom: 0;
   z-index: -3;
-  background: base.$white url("../../images/bg-main-desktop.png") fixed left
-    no-repeat;
+  background: base.$white url("../../images/bg-main-desktop.png") left no-repeat;
 }
 
 body {
@@ -18,26 +17,36 @@ body {
   width: 100vw;
   font-family: "Space Grotesk", sans-serif;
   font-size: base.$text;
-  display: block;
+  display: flex;
   position: relative;
+  justify-content: space-around;
+  align-items: center;
 }
 
 main {
-  height: 100%;
+  height: 90%;
   max-width: 1440px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
+  border: 0.1rem solid black;
 
   .cards-wrapper {
     color: base.$white;
-    padding-block: 2rem;
+    display: inherit;
+    flex-direction: column;
+    gap: 2rem;
+    border: 0.1rem solid black;
+    padding-inline: 5rem;
+    margin-inline-start: -10rem;
 
     .card-front,
     .card-back {
-      display: block;
+      display: flex;
       position: relative;
+      height: 15rem;
+      width: 26rem;
 
       .card-background {
         width: 100%;
@@ -46,13 +55,13 @@ main {
 
       .card-logo {
         position: absolute;
-        top: 2rem;
-        left: 2rem;
+        top: 1.5rem;
+        left: 1.5rem;
       }
 
       .card-number {
         position: absolute;
-        left: 2rem;
+        left: 1.5rem;
         top: 9rem;
         width: 100%;
         font-size: 1.7rem;
@@ -61,10 +70,10 @@ main {
 
       .card-name-exp {
         position: absolute;
-        left: 2rem;
-        top: 13rem;
-        width: 80%;
-        display: flex;
+        left: 1.5rem;
+        top: 12.5rem;
+        width: 87%;
+        display: inherit;
         justify-content: space-between;
         font-size: 0.8rem;
         letter-spacing: 0.2rem;
@@ -72,17 +81,78 @@ main {
 
       .card-cvc {
         position: absolute;
-        left: 22.5rem;
-        top: 7rem;
+        left: 21rem;
+        top: 6.8rem;
         font-size: 0.9rem;
       }
+    }
+
+    .card-front {
+      margin-inline-start: -5rem;
     }
   }
 
   form {
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 2rem 3rem;
+    width: 30rem;
+    color: base.$very-dark-violet;
+
+    input {
+      height: 3rem;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      width: 100%;
+      border: 0.1rem solid base.$light-grayish-violet;
+      padding-inline-start: 1rem;
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    input::placeholder {
+      color: base.$light-grayish-violet;
+    }
+
+    input[type="button"] {
+      background-color: base.$very-dark-violet;
+      color: base.$white;
+      font-weight: 700;
+    }
+
+    label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15rem;
+      margin-block-end: 0.5rem;
+    }
+
+    .date-cvc-container {
+      border: 0.1rem solid base.$light-grayish-violet;
+      gap: 1rem;
+      display: inline-flex;
+
+      .date-container {
+        width: 60%;
+        display: inherit;
+        flex-direction: column;
+
+        div {
+          display: flex;
+          gap: 0.5rem;
+
+          input {
+            width: 4.5rem;
+          }
+        }
+      }
+
+      .cvc-container {
+        width: 70%;
+      }
+    }
+
+    .confirm-button {
+      letter-spacing: 0.1rem;
+    }
   }
 }
 
