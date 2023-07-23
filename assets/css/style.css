@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body::before {
+  content: "";
+  display: block;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -3;
+  background: hsl(0, 0%, 100%) url("../../images/bg-main-desktop.png") fixed left no-repeat;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  display: block;
+  position: relative;
+}
+
+main {
+  height: 100%;
+  max-width: 1440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+main .cards-wrapper {
+  color: hsl(0, 0%, 100%);
+  padding-block: 2rem;
+}
+main .cards-wrapper .card-front,
+main .cards-wrapper .card-back {
+  display: block;
+  position: relative;
+}
+main .cards-wrapper .card-front .card-background,
+main .cards-wrapper .card-back .card-background {
+  width: 100%;
+  height: 100%;
+}
+main .cards-wrapper .card-front .card-logo,
+main .cards-wrapper .card-back .card-logo {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
+main .cards-wrapper .card-front .card-number,
+main .cards-wrapper .card-back .card-number {
+  position: absolute;
+  left: 2rem;
+  top: 9rem;
+  width: 100%;
+  font-size: 1.7rem;
+  letter-spacing: 0.2rem;
+}
+main .cards-wrapper .card-front .card-name-exp,
+main .cards-wrapper .card-back .card-name-exp {
+  position: absolute;
+  left: 2rem;
+  top: 13rem;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  letter-spacing: 0.2rem;
+}
+main .cards-wrapper .card-front .card-cvc,
+main .cards-wrapper .card-back .card-cvc {
+  position: absolute;
+  left: 22.5rem;
+  top: 7rem;
+  font-size: 0.9rem;
+}
+main form {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/*# sourceMappingURL=style.css.map */

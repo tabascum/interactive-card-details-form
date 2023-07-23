@@ -1,0 +1,98 @@
+@use "base";
+
+body::before {
+  content: "";
+  display: block;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -3;
+  background: base.$white url("../../images/bg-main-desktop.png") fixed left
+    no-repeat;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: base.$text;
+  display: block;
+  position: relative;
+}
+
+main {
+  height: 100%;
+  max-width: 1440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+
+  .cards-wrapper {
+    color: base.$white;
+    padding-block: 2rem;
+
+    .card-front,
+    .card-back {
+      display: block;
+      position: relative;
+
+      .card-background {
+        width: 100%;
+        height: 100%;
+      }
+
+      .card-logo {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+      }
+
+      .card-number {
+        position: absolute;
+        left: 2rem;
+        top: 9rem;
+        width: 100%;
+        font-size: 1.7rem;
+        letter-spacing: 0.2rem;
+      }
+
+      .card-name-exp {
+        position: absolute;
+        left: 2rem;
+        top: 13rem;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        letter-spacing: 0.2rem;
+      }
+
+      .card-cvc {
+        position: absolute;
+        left: 22.5rem;
+        top: 7rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
