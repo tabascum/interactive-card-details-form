@@ -1,6 +1,7 @@
 const cardNumber = document.getElementById("card-number");
 const cardName = document.getElementById("card-name");
-const cardExpDate = document.getElementById("card-exp-date");
+const cardExpMonth = document.getElementById("exp-month");
+const cardExpYear = document.getElementById("exp-year");
 const cardCvc = document.getElementById("cvc");
 
 const inputName = document.querySelector("#input-name");
@@ -9,10 +10,29 @@ const inputExpMonth = document.querySelector("#input-exp-month");
 const inputExpYear = document.querySelector("#input-exp-year");
 const inputCvc = document.querySelector("#cvc-number");
 
+const inputs = document.querySelectorAll("input");
+const form = document.querySelector("form");
+const confirmButton = document.querySelector(".confirm-button");
+
+const complete = document.querySelector(".complete");
+const continueButton = document.querySelector("#continue-button");
+
 inputName.oninput = () => {
   cardName.innerText = inputName.value;
 };
 
 inputNumber.oninput = () => {
   cardNumber.innerText = inputNumber.value;
+};
+
+confirmButton.onclick = (e) => {
+  e.preventDefault();
+
+  form.style.display = "none";
+  complete.style.display = "flex";
+};
+
+continueButton.onclick = () => {
+  form.style.display = "flex";
+  complete.style.display = "none";
 };

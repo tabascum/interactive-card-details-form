@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-$active-input-border: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
+$active-input-border: to right, hsl(249, 99%, 64%), hsl(278, 94%, 30%);
 $input-errors: hsl(0, 100%, 66%);
 
 $white: hsl(0, 0%, 100%);

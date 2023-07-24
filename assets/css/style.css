@@ -7,46 +7,30 @@
   box-sizing: border-box;
 }
 
-body::before {
-  content: "";
-  display: block;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: -3;
-  background: hsl(0, 0%, 100%) url("../../images/bg-main-desktop.png") left no-repeat;
-}
-
 body {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
   font-family: "Space Grotesk", sans-serif;
   font-size: 18px;
   display: flex;
-  position: relative;
   justify-content: space-around;
   align-items: center;
+  background: transparent url("../../images/bg-main-desktop.png") no-repeat;
+  background-size: 34% 100%;
 }
 
 main {
-  height: 90%;
-  max-width: 1440px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
-  border: 0.1rem solid black;
+  position: absolute;
 }
 main .cards-wrapper {
   color: hsl(0, 0%, 100%);
   display: inherit;
   flex-direction: column;
   gap: 2rem;
-  border: 0.1rem solid black;
   padding-inline: 5rem;
-  margin-inline-start: -10rem;
 }
 main .cards-wrapper .card-front,
 main .cards-wrapper .card-back {
@@ -59,6 +43,7 @@ main .cards-wrapper .card-front .card-background,
 main .cards-wrapper .card-back .card-background {
   width: 100%;
   height: 100%;
+  overflow: auto;
 }
 main .cards-wrapper .card-front .card-logo,
 main .cards-wrapper .card-back .card-logo {
@@ -86,6 +71,10 @@ main .cards-wrapper .card-back .card-name-exp {
   font-size: 0.8rem;
   letter-spacing: 0.2rem;
 }
+main .cards-wrapper .card-front .card-name-exp .card-exp-date,
+main .cards-wrapper .card-back .card-name-exp .card-exp-date {
+  display: inherit;
+}
 main .cards-wrapper .card-front .card-cvc,
 main .cards-wrapper .card-back .card-cvc {
   position: absolute;
@@ -96,57 +85,114 @@ main .cards-wrapper .card-back .card-cvc {
 main .cards-wrapper .card-front {
   margin-inline-start: -5rem;
 }
-main form {
+main form,
+main .complete {
   display: flex;
   flex-direction: column;
-  padding: 2rem 3rem;
-  width: 30rem;
+  padding: 2rem 3.5rem;
+  max-width: 30rem;
   color: hsl(278, 68%, 11%);
+  gap: 1rem;
 }
-main form input {
+main form label,
+main .complete label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15rem;
+}
+main form .error-label,
+main .complete .error-label {
+  display: none;
+  color: hsl(0, 100%, 66%);
+  font-size: 0.7rem;
+  margin-block-start: 0.5rem;
+  text-transform: none;
+  letter-spacing: normal;
+}
+main form .input-error,
+main .complete .input-error {
+  border: 0.1rem solid hsl(0, 100%, 66%);
+}
+main form input,
+main .complete input {
+  display: inline-block;
+  width: 100%;
   height: 3rem;
   border-radius: 0.5rem;
-  font-size: 1rem;
-  width: 100%;
   border: 0.1rem solid hsl(270, 3%, 87%);
+  margin-block-start: 0.3rem;
   padding-inline-start: 1rem;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
-main form input::placeholder {
+main form input::placeholder,
+main .complete input::placeholder {
   color: hsl(270, 3%, 87%);
 }
-main form input[type=button] {
+main form input[type=button],
+main form button,
+main .complete input[type=button],
+main .complete button {
   background-color: hsl(278, 68%, 11%);
+  padding-inline-start: 0;
   color: hsl(0, 0%, 100%);
   font-weight: 700;
 }
-main form label {
-  font-size: 0.7rem;
-  letter-spacing: 0.15rem;
-  margin-block-end: 0.5rem;
+main form .date-cvc-container,
+main .complete .date-cvc-container {
+  display: flex;
 }
-main form .date-cvc-container {
-  border: 0.1rem solid hsl(270, 3%, 87%);
-  gap: 1rem;
-  display: inline-flex;
-}
-main form .date-cvc-container .date-container {
-  width: 60%;
+main form .date-cvc-container .date-container,
+main form .date-cvc-container .cvc-container,
+main .complete .date-cvc-container .date-container,
+main .complete .date-cvc-container .cvc-container {
   display: inherit;
   flex-direction: column;
+  width: 100%;
 }
-main form .date-cvc-container .date-container div {
+main form .date-cvc-container .date-container .exp-date input,
+main form .date-cvc-container .cvc-container .exp-date input,
+main .complete .date-cvc-container .date-container .exp-date input,
+main .complete .date-cvc-container .cvc-container .exp-date input {
+  width: 5rem;
+}
+main form .date-cvc-container .date-container .cvc-number,
+main form .date-cvc-container .cvc-container .cvc-number,
+main .complete .date-cvc-container .date-container .cvc-number,
+main .complete .date-cvc-container .cvc-container .cvc-number {
   display: flex;
-  gap: 0.5rem;
+  width: 100%;
 }
-main form .date-cvc-container .date-container div input {
-  width: 4.5rem;
-}
-main form .date-cvc-container .cvc-container {
-  width: 70%;
-}
-main form .confirm-button {
+main form .confirm-button,
+main .complete .confirm-button {
   letter-spacing: 0.1rem;
+  font-size: 1rem;
+}
+main .complete {
+  display: none;
+  align-items: center;
+  max-width: 30rem;
+  padding: 2rem 3.5rem;
+}
+main .complete h1 {
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+}
+main .complete p {
+  color: hsl(279, 6%, 55%);
+  text-transform: none;
+  padding-inline: 3rem;
+  font-size: 1rem;
+}
+main .complete button {
+  letter-spacing: 0.1rem;
+  font-family: inherit;
+  width: 100%;
+  border: none;
+  height: 3rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  margin-block-start: 2rem;
 }
 
 input::-webkit-outer-spin-button,
