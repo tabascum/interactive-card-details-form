@@ -15,7 +15,13 @@ body {
   justify-content: space-around;
   align-items: center;
   background: transparent url("../../images/bg-main-desktop.png") no-repeat;
-  background-size: 34% 100%;
+  background-size: 35% 100%;
+}
+@media (max-width: 1020px) {
+  body {
+    background: transparent url("../../images/bg-main-mobile.png") no-repeat;
+    background-size: 100% 35%;
+  }
 }
 
 main {
@@ -24,6 +30,13 @@ main {
   justify-content: center;
   text-transform: uppercase;
   position: absolute;
+  max-width: 1440px;
+}
+@media (max-width: 1020px) {
+  main {
+    min-height: 100vh;
+    flex-direction: column;
+  }
 }
 main .cards-wrapper {
   color: hsl(0, 0%, 100%);
@@ -32,12 +45,24 @@ main .cards-wrapper {
   gap: 2rem;
   padding-inline: 5rem;
 }
+@media (max-width: 1020px) {
+  main .cards-wrapper {
+    padding-inline: 1rem;
+  }
+}
 main .cards-wrapper .card-front,
 main .cards-wrapper .card-back {
   display: flex;
   position: relative;
   height: 15rem;
   width: 26rem;
+}
+@media (max-width: 1020px) {
+  main .cards-wrapper .card-front,
+  main .cards-wrapper .card-back {
+    height: 100%;
+    width: 100%;
+  }
 }
 main .cards-wrapper .card-front .card-background,
 main .cards-wrapper .card-back .card-background {
@@ -165,6 +190,7 @@ main .complete .date-cvc-container .cvc-container .cvc-number {
 }
 main form .confirm-button,
 main .complete .confirm-button {
+  margin-block-start: 2rem;
   letter-spacing: 0.1rem;
   font-size: 1rem;
 }
