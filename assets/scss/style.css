@@ -9,7 +9,6 @@
 
 body {
   min-height: 100vh;
-  min-width: 100vw;
   font-family: "Space Grotesk", sans-serif;
   font-size: 18px;
   display: flex;
@@ -20,9 +19,8 @@ body {
 }
 @media (max-width: 1020px) {
   body {
-    justify-content: center;
-    background: transparent url("../../images/bg-main-mobile.png") fixed no-repeat;
-    background-size: 100% 30%;
+    background: transparent url("../../images/bg-main-mobile.png") no-repeat;
+    background-size: 100% 35%;
   }
 }
 
@@ -37,13 +35,11 @@ main {
 @media (max-width: 1020px) {
   main {
     min-height: 100vh;
-    max-width: 375px;
     flex-direction: column;
   }
 }
 main .cards-wrapper {
   color: hsl(0, 0%, 100%);
-  align-items: center;
   display: inherit;
   flex-direction: column;
   gap: 2rem;
@@ -52,9 +48,7 @@ main .cards-wrapper {
 @media (max-width: 1020px) {
   main .cards-wrapper {
     flex-direction: column-reverse;
-    height: 100%;
-    width: 100%;
-    padding: 0;
+    align-items: center;
     gap: 0;
   }
 }
@@ -69,7 +63,7 @@ main .cards-wrapper .card-back {
   main .cards-wrapper .card-front,
   main .cards-wrapper .card-back {
     height: auto;
-    width: 19rem;
+    width: 20rem;
   }
 }
 main .cards-wrapper .card-front .card-background,
@@ -77,17 +71,18 @@ main .cards-wrapper .card-back .card-background {
   width: 100%;
   height: 100%;
 }
+@media (max-width: 1020px) {
+  main .cards-wrapper .card-front .card-background,
+  main .cards-wrapper .card-back .card-background {
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}
 main .cards-wrapper .card-front .card-logo,
 main .cards-wrapper .card-back .card-logo {
   position: absolute;
   top: 1.5rem;
   left: 1.5rem;
-}
-@media (max-width: 1020px) {
-  main .cards-wrapper .card-front .card-logo,
-  main .cards-wrapper .card-back .card-logo {
-    width: 4rem;
-  }
 }
 main .cards-wrapper .card-front .card-number,
 main .cards-wrapper .card-back .card-number {
@@ -97,13 +92,6 @@ main .cards-wrapper .card-back .card-number {
   width: 100%;
   font-size: 1.7rem;
   letter-spacing: 0.2rem;
-}
-@media (max-width: 1020px) {
-  main .cards-wrapper .card-front .card-number,
-  main .cards-wrapper .card-back .card-number {
-    top: 6rem;
-    font-size: 1.1rem;
-  }
 }
 main .cards-wrapper .card-front .card-name-exp,
 main .cards-wrapper .card-back .card-name-exp {
@@ -116,13 +104,6 @@ main .cards-wrapper .card-back .card-name-exp {
   font-size: 0.8rem;
   letter-spacing: 0.2rem;
 }
-@media (max-width: 1020px) {
-  main .cards-wrapper .card-front .card-name-exp,
-  main .cards-wrapper .card-back .card-name-exp {
-    top: 9rem;
-    font-size: 0.6rem;
-  }
-}
 main .cards-wrapper .card-front .card-name-exp .card-exp-date,
 main .cards-wrapper .card-back .card-name-exp .card-exp-date {
   display: inherit;
@@ -134,27 +115,13 @@ main .cards-wrapper .card-back .card-cvc {
   top: 6.8rem;
   font-size: 0.9rem;
 }
-@media (max-width: 1020px) {
-  main .cards-wrapper .card-front .card-cvc,
-  main .cards-wrapper .card-back .card-cvc {
-    left: 15rem;
-    top: 4.7rem;
-    font-size: 0.7rem;
-  }
-}
 main .cards-wrapper .card-front {
   margin-inline-start: -5rem;
 }
 @media (max-width: 1020px) {
   main .cards-wrapper .card-front {
-    margin-inline-start: -3rem;
-    margin-block-start: -4.4rem;
+    margin-block-start: -6.5rem;
     z-index: 1;
-  }
-}
-@media (max-width: 1020px) {
-  main .cards-wrapper .card-back {
-    margin-inline-end: -4rem;
   }
 }
 main form,
@@ -169,7 +136,7 @@ main .complete {
 @media (max-width: 1020px) {
   main form,
   main .complete {
-    padding: 1rem;
+    padding: 2rem;
   }
 }
 main form label,
@@ -202,6 +169,9 @@ main .complete input {
   font-family: inherit;
   font-size: 1.2rem;
   cursor: pointer;
+}
+main form input::-moz-placeholder, main .complete input::-moz-placeholder {
+  color: hsl(270, 3%, 87%);
 }
 main form input::placeholder,
 main .complete input::placeholder {
@@ -282,7 +252,6 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
   -moz-appearance: textfield;
-  appearance: textfield;
-}
-
-/*# sourceMappingURL=style.css.map */
+  -webkit-appearance: textfield;
+          appearance: textfield;
+}/*# sourceMappingURL=style.css.map */

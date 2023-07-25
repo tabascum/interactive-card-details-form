@@ -22,7 +22,9 @@ inputName.oninput = () => {
 };
 
 inputNumber.oninput = () => {
-  cardNumber.innerHTML = inputNumber.value;
+  let number = inputNumber.value;
+
+  cardNumber.innerText = number;
 };
 
 confirmButton.onclick = (e) => {

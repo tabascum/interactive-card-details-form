@@ -8,7 +8,13 @@
   box-sizing: border-box;
 }
 
-$active-input-border: to right, hsl(249, 99%, 64%), hsl(278, 94%, 30%);
+$active-input-border: linear-gradient(
+  to right,
+  90deg,
+  hsl(249, 99%, 64%) 0%,
+  hsl(278, 94%, 30%) 100%
+);
+
 $input-errors: hsl(0, 100%, 66%);
 
 $white: hsl(0, 0%, 100%);

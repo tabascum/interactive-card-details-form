@@ -2,6 +2,7 @@
 
 body {
   min-height: 100vh;
+  min-width: 100vw;
   font-family: "Space Grotesk", sans-serif;
   font-size: base.$text;
   display: flex;
@@ -11,8 +12,10 @@ body {
   background-size: 35% 100%;
 
   @media (max-width: 1020px) {
-    background: transparent url("../../images/bg-main-mobile.png") no-repeat;
-    background-size: 100% 35%;
+    justify-content: center;
+    background: transparent url("../../images/bg-main-mobile.png") fixed
+      no-repeat;
+    background-size: 100% 30%;
   }
 }
 
@@ -26,18 +29,24 @@ main {
 
   @media (max-width: 1020px) {
     min-height: 100vh;
+    max-width: 375px;
     flex-direction: column;
   }
 
   .cards-wrapper {
     color: base.$white;
+    align-items: center;
     display: inherit;
     flex-direction: column;
     gap: 2rem;
     padding-inline: 5rem;
 
     @media (max-width: 1020px) {
-      padding-inline: 1rem;
+      flex-direction: column-reverse;
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      gap: 0;
     }
 
     .card-front,
@@ -48,20 +57,23 @@ main {
       width: 26rem;
 
       @media (max-width: 1020px) {
-        height: 100%;
-        width: 100%;
+        height: auto;
+        width: 19rem;
       }
 
       .card-background {
         width: 100%;
         height: 100%;
-        overflow: auto;
       }
 
       .card-logo {
         position: absolute;
         top: 1.5rem;
         left: 1.5rem;
+
+        @media (max-width: 1020px) {
+          width: 4rem;
+        }
       }
 
       .card-number {
@@ -71,6 +83,11 @@ main {
         width: 100%;
         font-size: 1.7rem;
         letter-spacing: 0.2rem;
+
+        @media (max-width: 1020px) {
+          top: 6rem;
+          font-size: 1.1rem;
+        }
       }
 
       .card-name-exp {
@@ -83,6 +100,11 @@ main {
         font-size: 0.8rem;
         letter-spacing: 0.2rem;
 
+        @media (max-width: 1020px) {
+          top: 9rem;
+          font-size: 0.6rem;
+        }
+
         .card-exp-date {
           display: inherit;
         }
@@ -93,11 +115,29 @@ main {
         left: 21rem;
         top: 6.8rem;
         font-size: 0.9rem;
+
+        @media (max-width: 1020px) {
+          left: 15rem;
+          top: 4.7rem;
+          font-size: 0.7rem;
+        }
       }
     }
 
     .card-front {
       margin-inline-start: -5rem;
+
+      @media (max-width: 1020px) {
+        margin-inline-start: -3rem;
+        margin-block-start: -4.4rem;
+        z-index: 1;
+      }
+    }
+
+    .card-back {
+      @media (max-width: 1020px) {
+        margin-inline-end: -4rem;
+      }
     }
   }
 
@@ -109,6 +149,10 @@ main {
     max-width: 30rem;
     color: base.$very-dark-violet;
     gap: 1rem;
+
+    @media (max-width: 1020px) {
+      padding: 1rem;
+    }
 
     label {
       font-size: 0.7rem;
