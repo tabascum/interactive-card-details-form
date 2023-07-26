@@ -178,7 +178,9 @@ main .complete label {
   letter-spacing: 0.15rem;
 }
 main form .error-label,
-main .complete .error-label {
+main form #format-error,
+main .complete .error-label,
+main .complete #format-error {
   display: none;
   color: hsl(0, 100%, 66%);
   font-size: 0.7rem;

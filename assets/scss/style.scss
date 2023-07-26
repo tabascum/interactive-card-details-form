@@ -159,7 +159,8 @@ main {
       letter-spacing: 0.15rem;
     }
 
-    .error-label {
+    .error-label,
+    #format-error {
       display: none;
       color: base.$input-errors;
       font-size: 0.7rem;

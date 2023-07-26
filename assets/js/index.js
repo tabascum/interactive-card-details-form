@@ -22,9 +22,14 @@ inputName.oninput = () => {
 };
 
 inputNumber.oninput = () => {
-  let number = inputNumber.value;
+  const numberRegexp = /^[0-9]+$/;
 
-  cardNumber.innerText = number;
+  if (inputNumber.value.match(numberRegexp)) {
+    cardNumber.innerText = inputNumber.value;
+    document.getElementById("format-error").style.display = "none";
+  } else {
+    document.getElementById("format-error").style.display = "flex";
+  }
 };
 
 confirmButton.onclick = (e) => {
