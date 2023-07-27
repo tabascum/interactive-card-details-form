@@ -188,10 +188,6 @@ main .complete #format-error {
   text-transform: none;
   letter-spacing: normal;
 }
-main form .input-error,
-main .complete .input-error {
-  border: 0.1rem solid hsl(0, 100%, 66%);
-}
 main form input,
 main .complete input {
   display: inline-block;
@@ -221,6 +217,7 @@ main .complete button {
 main form .date-cvc-container,
 main .complete .date-cvc-container {
   display: flex;
+  margin-block-start: 0.5rem;
 }
 main form .date-cvc-container .date-container,
 main form .date-cvc-container .cvc-container,

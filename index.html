@@ -44,12 +44,12 @@
         <label for="name">Cardholder Name</label>
         <input type="text" name="name" id="input-name" maxlength="20" placeholder="e.g. Jane Appleseed"
           autocomplete="off">
-        <label class="error-label" for="exp-date">Can't be blank</label>
+        <label class="error-label" for="name">Can't be blank</label>
       </div>
 
       <div class="form-number">
         <label for="number">Card Number</label>
-        <input type="text" name="number" id="input-number" maxlength="16" placeholder="e.g. 1234 5678 9123 0000">
+        <input type="text" name="number" id="input-number" maxlength="19" placeholder="e.g. 1234 5678 9123 0000">
         <label class="error-label" for="number">Can't be blank</label>
         <label id="format-error" for="number">Wrong format, numbers only</label>
       </div>
@@ -71,7 +71,7 @@
           <div class="cvc-number">
             <input type="text" name="cvc-number" maxlength="3" id="cvc-number" placeholder="e.g. 123">
           </div>
-          <label class="error-label" for="exp-date">Can't be blank</label>
+          <label class="error-label" for="cvc">Can't be blank</label>
         </div>
       </div>
 
