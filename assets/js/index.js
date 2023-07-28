@@ -4,6 +4,9 @@ const cardExpMonth = document.getElementById("exp-month");
 const cardExpYear = document.getElementById("exp-year");
 const cardCvc = document.getElementById("cvc");
 
+const errorLabel = document.querySelectorAll(".error-label");
+const errorInput = document.getElementById("format-error");
+
 const inputName = document.querySelector("#input-name");
 const inputNumber = document.querySelector("#input-number");
 const inputExpMonth = document.querySelector("#input-exp-month");
@@ -21,14 +24,25 @@ inputName.oninput = () => {
   cardName.innerText = inputName.value;
 };
 
+function splitNumber(arr, chunkSize) {
+  return Array.from({ length: Math.ceil(arr.length / chunkSize) }, (_, index) =>
+    arr.slice(index * chunkSize, index * chunkSize + chunkSize)
+  );
+}
+
 inputNumber.oninput = () => {
   const numberRegexp = /^\d+$/;
+  const arrayNumber = inputNumber.value.replace(/\s/g, "");
+  const chunkSize = 4;
 
-  if (inputNumber.value.match(numberRegexp)) {
-    cardNumber.innerText = inputNumber.value;
-    document.getElementById("format-error").style.display = "none";
+  const newNumbers = splitNumber(arrayNumber, chunkSize);
+
+  if (arrayNumber.match(numberRegexp)) {
+    cardNumber.innerText = newNumbers.join(" ");
+    errorInput.style.display = "";
   } else {
-    document.getElementById("format-error").style.display = "flex";
+    cardNumber.innerText;
+    errorInput.style.display = "block";
   }
 };
 
@@ -44,23 +58,26 @@ inputCvc.oninput = () => {
   cardCvc.innerText = inputCvc.value;
 };
 
-document.querySelectorAll(".error-label").forEach((label) => {
-  label.style.display = "block";
-  inputs.forEach((input) => {
-    if (input.value === "") {
-      input.style.border = ".1rem solid hsl(0, 100%, 66%)";
-    }
-  });
-});
-
 confirmButton.onclick = (e) => {
   e.preventDefault();
 
-  form.style.display = "none";
-  complete.style.display = "flex";
+  inputs.forEach((input) => {
+    if (!input.value) {
+      input.style.border = ".1rem solid hsl(0, 100%, 66%)";
+      errorLabel.forEach((error) => {
+        error.style.display = "block";
+      });
+      complete.style.display = "none";
+      form.style.display = "flex";
+    } else {
+      input.style.border = "";
+      complete.style.display = "flex";
+      form.style.display = "none";
+    }
+  });
 };
 
 continueButton.onclick = () => {
-  form.style.display = "flex";
   complete.style.display = "none";
+  form.style.display = "flex";
 };

@@ -194,6 +194,10 @@ main {
       font-weight: 700;
     }
 
+    .error-border {
+      border: 0.1rem solid base.$input-errors;
+    }
+
     .date-cvc-container {
       display: flex;
       margin-block-start: 0.5rem;
