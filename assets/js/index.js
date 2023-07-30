@@ -39,19 +39,36 @@ inputNumber.oninput = () => {
 
   if (arrayNumber.match(numberRegexp)) {
     cardNumber.innerText = newNumbers.join(" ");
-    errorInput.style.display = "";
+    errorInput.style.display = "none";
   } else {
-    cardNumber.innerText;
     errorInput.style.display = "block";
   }
+
+  !arrayNumber ? (errorInput.innerText = "Can't be blank") : !errorInput;
 };
 
 inputExpMonth.oninput = () => {
+  const month = inputExpMonth.value;
+  const isValidMonth = !isNaN(month) && month > 0 && month <= 12;
+
+  if (!isValidMonth) {
+    inputExpMonth.style.border = ".1rem solid hsl(0, 100%, 66%)";
+  }
+
   cardExpMonth.innerText = inputExpMonth.value;
 };
 
 inputExpYear.oninput = () => {
   cardExpYear.innerText = inputExpYear.value;
+
+  const year = inputExpYear.value;
+  const actualYear = new Date().getFullYear() % 100;
+
+  const isValidYear = !isNaN(year) && year >= actualYear;
+
+  if (!isValidYear) {
+    inputExpYear.style.border = ".1rem solid hsl(0, 100%, 66%)";
+  }
 };
 
 inputCvc.oninput = () => {
@@ -70,7 +87,6 @@ confirmButton.onclick = (e) => {
       complete.style.display = "none";
       form.style.display = "flex";
     } else {
-      input.style.border = "";
       complete.style.display = "flex";
       form.style.display = "none";
     }
@@ -78,6 +94,10 @@ confirmButton.onclick = (e) => {
 };
 
 continueButton.onclick = () => {
+  inputs.forEach((input) => {
+    input.value = "";
+  });
+
   complete.style.display = "none";
   form.style.display = "flex";
 };
