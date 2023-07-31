@@ -42,9 +42,8 @@ inputNumber.oninput = () => {
     errorInput.style.display = "none";
   } else {
     errorInput.style.display = "block";
+    errorInput.innerText = "Wrong format, numbers only";
   }
-
-  !arrayNumber ? (errorInput.innerText = "Can't be blank") : !errorInput;
 };
 
 inputExpMonth.oninput = () => {
@@ -53,6 +52,10 @@ inputExpMonth.oninput = () => {
 
   if (!isValidMonth) {
     inputExpMonth.style.border = ".1rem solid hsl(0, 100%, 66%)";
+    document.querySelector(".date-container .error-label").textContent =
+      "Must be between 1 and 12";
+    document.querySelector(".date-container .error-label").style.display =
+      "block";
   }
 
   cardExpMonth.innerText = inputExpMonth.value;
@@ -78,19 +81,25 @@ inputCvc.oninput = () => {
 confirmButton.onclick = (e) => {
   e.preventDefault();
 
-  inputs.forEach((input) => {
-    if (!input.value) {
-      input.style.border = ".1rem solid hsl(0, 100%, 66%)";
-      errorLabel.forEach((error) => {
-        error.style.display = "block";
-      });
-      complete.style.display = "none";
-      form.style.display = "flex";
-    } else {
-      complete.style.display = "flex";
-      form.style.display = "none";
-    }
-  });
+  if (
+    !inputName.value ||
+    !inputNumber.value ||
+    !inputExpMonth.value ||
+    !inputExpYear.value ||
+    !inputCvc.value
+  ) {
+    errorLabel.forEach((error) => {
+      error.style.display = "block";
+    });
+    complete.style.display = "none";
+    form.style.display = "flex";
+  } else {
+    errorLabel.forEach((error) => {
+      error.style.display = "none";
+    });
+    complete.style.display = "flex";
+    form.style.display = "none";
+  }
 };
 
 continueButton.onclick = () => {
