@@ -5,7 +5,6 @@ const cardExpYear = document.getElementById("exp-year");
 const cardCvc = document.getElementById("cvc");
 
 const errorLabel = document.querySelectorAll(".error-label");
-const errorInput = document.getElementById("format-error");
 
 const inputName = document.querySelector("#input-name");
 const inputNumber = document.querySelector("#input-number");
@@ -39,10 +38,17 @@ inputNumber.oninput = () => {
 
   if (arrayNumber.match(numberRegexp)) {
     cardNumber.innerText = newNumbers.join(" ");
-    errorInput.style.display = "none";
+    inputNumber.classList.remove("error");
+  } else if (!inputNumber.value) {
+    inputNumber.classList.add("error");
+    document.querySelector(".form-number .error-label").innerHTML =
+      "Can't be blank";
+    document.querySelector(".form-number .error-label").style.display = "block";
   } else {
-    errorInput.style.display = "block";
-    errorInput.innerText = "Wrong format, numbers only";
+    inputNumber.classList.add("error");
+    document.querySelector(".form-number .error-label").innerHTML =
+      "Wrong format, numbers only";
+    document.querySelector(".form-number .error-label").style.display = "block";
   }
 };
 
@@ -50,15 +56,24 @@ inputExpMonth.oninput = () => {
   const month = inputExpMonth.value;
   const isValidMonth = !isNaN(month) && month > 0 && month <= 12;
 
-  if (!isValidMonth) {
-    inputExpMonth.style.border = ".1rem solid hsl(0, 100%, 66%)";
-    document.querySelector(".date-container .error-label").textContent =
+  if (!inputExpMonth.value) {
+    inputExpMonth.classList.add("error");
+    document.querySelector(".date-container .error-label").innerHTML =
+      "Can't be blank";
+    document.querySelector(".date-container .error-label").style.display =
+      "block";
+  } else if (!isValidMonth) {
+    inputExpMonth.classList.add(".error");
+    document.querySelector(".date-container .error-label").innerHTML =
       "Must be between 1 and 12";
     document.querySelector(".date-container .error-label").style.display =
       "block";
+  } else {
+    cardExpMonth.innerText = inputExpMonth.value;
+    inputExpMonth.classList.remove("error");
+    document.querySelector(".date-container .error-label").style.display =
+      "none";
   }
-
-  cardExpMonth.innerText = inputExpMonth.value;
 };
 
 inputExpYear.oninput = () => {
@@ -69,24 +84,43 @@ inputExpYear.oninput = () => {
 
   const isValidYear = !isNaN(year) && year >= actualYear;
 
-  if (!isValidYear) {
-    inputExpYear.style.border = ".1rem solid hsl(0, 100%, 66%)";
+  if (!inputExpYear.value) {
+    inputExpYear.classList.add("error");
+    document.querySelector(".date-container .error-label").innerHTML =
+      "Can't be blank";
+    document.querySelector(".date-container .error-label").style.display =
+      "block";
+  } else if (!isValidYear) {
+    inputExpYear.classList.add(".error");
+    document.querySelector(".date-container .error-label").innerHTML =
+      "Must be current year or higher";
+    document.querySelector(".date-container .error-label").style.display =
+      "block";
+  } else {
+    cardExpYear.innerText = inputExpYear.value;
+    inputExpYear.classList.remove("error");
+    document.querySelector(".date-container .error-label").style.display =
+      "none";
   }
 };
 
 inputCvc.oninput = () => {
-  cardCvc.innerText = inputCvc.value;
+  const numberRegexp = /^\d+$/;
+
+  if (inputCvc.value.match(numberRegexp)) {
+    cardCvc.innerText = inputCvc.value;
+  }
 };
 
 confirmButton.onclick = (e) => {
   e.preventDefault();
 
   if (
-    !inputName.value ||
-    !inputNumber.value ||
-    !inputExpMonth.value ||
-    !inputExpYear.value ||
-    !inputCvc.value
+    (!inputName.value,
+    !inputNumber.value,
+    !inputExpMonth.value,
+    !inputExpYear.value,
+    !inputCvc.value)
   ) {
     errorLabel.forEach((error) => {
       error.style.display = "block";

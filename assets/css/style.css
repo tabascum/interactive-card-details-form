@@ -178,9 +178,7 @@ main .complete label {
   letter-spacing: 0.15rem;
 }
 main form .error-label,
-main form #format-error,
-main .complete .error-label,
-main .complete #format-error {
+main .complete .error-label {
   display: none;
   color: hsl(0, 100%, 66%);
   font-size: 0.7rem;
@@ -204,6 +202,16 @@ main .complete input {
 main form input::placeholder,
 main .complete input::placeholder {
   color: hsl(270, 3%, 87%);
+}
+main form input:focus-visible,
+main .complete input:focus-visible {
+  outline: 0;
+  border: 0.1rem solid;
+  border-color: hsl(249, 99%, 64%);
+}
+main form input[type=text].error,
+main .complete input[type=text].error {
+  border: 0.1rem solid hsl(0, 100%, 66%);
 }
 main form input[type=button],
 main form button,

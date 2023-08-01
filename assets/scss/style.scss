@@ -159,7 +159,7 @@ main {
       letter-spacing: 0.15rem;
     }
 
-    .error {
+    .error-label {
       display: none;
       color: base.$input-errors;
       font-size: 0.7rem;
@@ -179,10 +179,20 @@ main {
       font-family: inherit;
       font-size: 1.2rem;
       cursor: pointer;
+
+      &::placeholder {
+        color: base.$light-grayish-violet;
+      }
+
+      &:focus-visible {
+        outline: 0;
+        border: 0.1rem solid;
+        border-color: hsl(249, 99%, 64%);
+      }
     }
 
-    input::placeholder {
-      color: base.$light-grayish-violet;
+    input[type="text"].error {
+      border: 0.1rem solid base.$input-errors;
     }
 
     input[type="button"],
